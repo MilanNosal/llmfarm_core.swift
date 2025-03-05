@@ -276,6 +276,12 @@ public class LLaMa: LLMBase {
     //     }
     // }
     
+    public override func resetContext() throws {
+        llama_kv_cache_clear(context)  // Completely clears past tokens
+        self.nPast = 0
+        print("Context fully reset!")
+    }
+    
     public override func KVShift() throws{
         let n_discard = self.nPast/2
         llama_kv_cache_seq_rm (context, 0, self.sampleParams.repeat_last_n            , self.sampleParams.repeat_last_n + n_discard);

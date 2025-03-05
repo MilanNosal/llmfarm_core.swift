@@ -123,6 +123,9 @@ public class LLMBase/*: LLMInference*/ {
     }
     
     
+    public func resetContext() throws {
+    }
+    
     public func llm_token_is_eog(token: ModelToken) -> Bool{
         if token == llm_token_eos(){
             return true

@@ -74,6 +74,17 @@ public class AI {
     
     }
 
+    public func resetContext() throws {
+        do {
+           try ExceptionCather.catchException {
+               try? self.model?.resetContext()
+           }
+       }
+       catch{
+           print(error)
+           throw error
+       }
+    }
 
     public func loadModel_sync() throws {
          do{
